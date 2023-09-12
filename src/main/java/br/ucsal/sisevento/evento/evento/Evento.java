@@ -1,14 +1,35 @@
 package br.ucsal.sisevento.evento.evento;
 
+import java.util.UUID;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "eventos")
 public class Evento implements Comparable<Evento>  {
-	String tipo;
-	String titulo;
+	
+	//DDL
+	//DML
+	@Id
+	private Integer id;
+	
+	private String tipo;
+	
+	private String titulo;
+	
+	//
+	public Evento() {
+	
+	}
+	
 	public Evento(String tipo, String titulo) {
 		super();
 		this.tipo = tipo;
 		this.titulo = titulo;
 	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

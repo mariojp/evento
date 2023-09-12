@@ -5,17 +5,18 @@ import java.util.TreeSet;
 
 import org.springframework.stereotype.Service;
 
+@Service
 public class EventoService {
 	
-	private Collection<Evento> eventos = new TreeSet<>();
 
+	private final EventoRepository eventoRepository;
 	
-	protected Collection<Evento> obterEventos() {
-		eventos.add(new Evento("Mesa Redonda 1","IA"));
-		eventos.add(new Evento("Mesa Redonda 1","IA"));
-		eventos.add(new Evento("Mesa Redonda 1","IA"));
-		eventos.add(new  Evento("Mesa Redonda 2","WEB"));
-		eventos.add(new Evento("Mesa Redonda 2","BIG NOTATIONS"));
-		return eventos;
+	
+	public EventoService(EventoRepository eventoRepository) {
+		this.eventoRepository = eventoRepository;
+	}
+	
+	public Collection<Evento> obterEventos() {
+		return eventoRepository.findAll();
 	}
 }
